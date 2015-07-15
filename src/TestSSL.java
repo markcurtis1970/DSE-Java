@@ -16,9 +16,9 @@ public class TestSSL {
     public static void main(String[] args) throws Exception
     {
         SSLContext context = getSSLContext("/Users/mark/.truststore",
-                "Nervou5",
+                "somepassword",
                 "/Users/mark/.keystore",
-                "Nervou5");
+                "somepassword");
 
         // Default cipher suites supported by C*
         String[] cipherSuites = { "TLS_RSA_WITH_AES_128_CBC_SHA",
