@@ -31,7 +31,7 @@ public class TestSSL {
         System.out.println("connecting...");
         Session session = cluster.connect();
         System.out.println(session.getState().toString());
-        ResultSet myResults = session.execute("select * from system.peers limit 1");
+        ResultSet myResults = session.execute("select * from system.peers");
         for (Row myRow: myResults){
             System.out.println(myRow.toString());
 

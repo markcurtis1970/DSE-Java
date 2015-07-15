@@ -12,7 +12,7 @@ public class DSEtest {
 
     public static void main (String args[]){
         DSEtest test = new DSEtest();
-        test.runTest("192.168.56.21");
+        test.runTest("104.154.51.22");
 
     }
     private void runTest(String node){
