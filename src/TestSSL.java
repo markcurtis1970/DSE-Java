@@ -15,23 +15,23 @@ import java.security.SecureRandom;
 public class TestSSL {
     public static void main(String[] args) throws Exception
     {
-        SSLContext context = getSSLContext("/Users/mark/.truststore",
-                "Nervou5",
-                "/Users/mark/.keystore",
-                "Nervou5");
+        SSLContext context = getSSLContext("/Users/mark/truststore",
+                "datastax",
+                "/Users/mark/keystore",
+                "datastax");
 
         // Default cipher suites supported by C*
         String[] cipherSuites = { "TLS_RSA_WITH_AES_128_CBC_SHA",
                 "TLS_RSA_WITH_AES_256_CBC_SHA" };
 
         Cluster cluster = Cluster.builder()
-                .addContactPoints("192.168.56.21")
+                .addContactPoints("104.154.51.22")
                 .withSSL(new SSLOptions(context, cipherSuites))
                 .build();
         System.out.println("connecting...");
         Session session = cluster.connect();
         System.out.println(session.getState().toString());
-        ResultSet myResults = session.execute("select * from system.users limit 1");
+        ResultSet myResults = session.execute("select * from system.peers limit 1");
         for (Row myRow: myResults){
             System.out.println(myRow.toString());
 
