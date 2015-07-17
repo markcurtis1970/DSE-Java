@@ -44,7 +44,7 @@ public class t13752 {
 
 		Cluster cluster = Cluster.builder()
 
-				.withClusterName("HawkeyeCluster")
+				.withClusterName("SomeCluster")
 
 				.withPort(9042)
 
