@@ -19,7 +19,7 @@ public class ExampleExport {
      */
     public static void main (String args[]) throws IOException {
         ExampleExport export = new ExampleExport();
-        export.runExport("192.168.56.23", "markc.test","/Users/mark/javaStuff/test.txt");
+        export.runExport("192.168.56.21", "markc.test","/Users/mark/javaStuff/test.txt");
 
     }
 
@@ -75,7 +75,7 @@ public class ExampleExport {
         cluster.close();
 
         // Write summary to std out
-        System.out.println("Finished. Exported " + count + " lines.");
+        System.out.println("Finished. " + count + " lines exported to: " + outputFile);
 
     }
 
