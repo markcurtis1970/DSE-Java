@@ -1,3 +1,3 @@
-# MarkC
+# DSE Java
 
-Some test java code
+This repository is purely for holding any examples, tests and other bits of java code related to working with the Datastax java driver and Cassandra
