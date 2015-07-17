@@ -16,7 +16,7 @@
     import com.google.common.base.Optional;
     import com.google.common.collect.Lists;
 
-    public class t13855 {
+    public class TestWithLogin {
 
         // the obligatory main entry point :-)
         public static void main (String args []){
