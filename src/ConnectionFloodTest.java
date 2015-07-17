@@ -9,10 +9,10 @@ import com.datastax.driver.core.policies.ExponentialReconnectionPolicy;
 import com.datastax.driver.core.policies.ReconnectionPolicy;
 
 
-public class t13752 {
+public class ConnectionFloodTest {
 	
 	public static void main (String args []){
-		t13752 myTest = new t13752();
+		ConnectionFloodTest myTest = new ConnectionFloodTest();
 		for (int i=0; i < 1001; i ++){
 		String hosts[] = {"192.168.56.21","192.168.56.22","192.168.56.23"};
 		myTest.initializeDatastaxClient(hosts, "results",Boolean.FALSE);
