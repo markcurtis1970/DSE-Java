@@ -12,7 +12,7 @@ import com.datastax.driver.core.HostDistance;
 import com.datastax.driver.core.PoolingOptions;
 import com.datastax.driver.core.Session;
 import com.datastax.driver.core.exceptions.AlreadyExistsException;
-public class t16810 {
+public class TestAlreadyExists {
 
 
     private static void createKeyspace(Cluster cluster, String keyspace) {
@@ -27,7 +27,7 @@ public class t16810 {
 
     private static void createTable(Session session, String table) throws IOException {
         System.out.println(" - create table");
-        session.execute(getContent("/Users/mark/javaStuff/MarkC/t16810/" + table + "/table.txt"));
+        session.execute(getContent("/Users/mark/javaStuff/MarkC/TestAlreadyExists/" + table + "/table.txt"));
     }
 
     private static void waitForSchemaAgreement(Cluster cluster) {
@@ -42,7 +42,7 @@ public class t16810 {
 
     private static String getContent(String path) throws IOException {
         StringBuilder sb = new StringBuilder();
-        //BufferedReader br = new BufferedReader(new InputStreamReader(t16810.class.getResourceAsStream(path)));
+        //BufferedReader br = new BufferedReader(new InputStreamReader(TestAlreadyExists.class.getResourceAsStream(path)));
         BufferedReader br = new BufferedReader(new FileReader(path));
         String line = null;
         while ((line = br.readLine()) != null) {
