@@ -10,12 +10,19 @@ import com.datastax.driver.core.policies.ReconnectionPolicy;
 
 
 public class ConnectionFloodTest {
+
+	/**
+	 * This is a test for creating a lof of connections to
+	 * a given cluster as a flood of connections
+	 *
+	 * @param args - optional
+	 */
 	
 	public static void main (String args []){
 		ConnectionFloodTest myTest = new ConnectionFloodTest();
 		for (int i=0; i < 1001; i ++){
 		String hosts[] = {"192.168.56.21","192.168.56.22","192.168.56.23"};
-		myTest.initializeDatastaxClient(hosts, "results",Boolean.FALSE);
+		myTest.initializeDatastaxClient(hosts, "markc",Boolean.FALSE);
 		System.out.println("connect attempt: " + i);
 		}
 	}
@@ -44,7 +51,7 @@ public class ConnectionFloodTest {
 
 		Cluster cluster = Cluster.builder()
 
-				.withClusterName("SomeCluster")
+				.withClusterName("Solr")
 
 				.withPort(9042)
 
