@@ -38,21 +38,6 @@ javac -cp ./*:. DSEtest.java
 
 ```
 $ java -cp ./*:. DSEtest 192.168.56.21
- INFO 17:25:01,490 Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
- INFO 17:25:02,051 Using data-center name 'Cassandra' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
- INFO 17:25:02,054 New Cassandra host /192.168.56.22:9042 added
- INFO 17:25:02,054 New Cassandra host /192.168.56.20:9042 added
- INFO 17:25:02,055 New Cassandra host /192.168.56.23:9042 added
- INFO 17:25:02,055 New Cassandra host /192.168.56.21:9042 added
-Connected to cluster: MarkieCluster
-Datacenter: Cassandra; Host: /192.168.56.22; Rack: rack1
-Datacenter: Cassandra; Host: /192.168.56.23; Rack: rack1
-Datacenter: Cassandra; Host: /192.168.56.20; Rack: rack1
-Datacenter: Cassandra; Host: /192.168.56.21; Rack: rack1
-Schema agrement: true
-Keyspaces: [CREATE KEYSPACE system_traces WITH REPLICATION = { 'class' : 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '2' } AND DURABLE_WRITES = true;, CREATE KEYSPACE system WITH REPLICATION = { 'class' : 'org.apache.cassandra.locator.LocalStrategy' } AND DURABLE_WRITES = true;, CREATE KEYSPACE test1 WITH REPLICATION = { 'class' : 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '1' } AND DURABLE_WRITES = true;, CREATE KEYSPACE "OpsCenter" WITH REPLICATION = { 'class' : 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '2' } AND DURABLE_WRITES = true;, CREATE KEYSPACE dse_perf WITH REPLICATION = { 'class' : 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '1' } AND DURABLE_WRITES = true;, CREATE KEYSPACE markc WITH REPLICATION = { 'class' : 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '3' } AND DURABLE_WRITES = true;, CREATE KEYSPACE dse_system WITH REPLICATION = { 'class' : 'org.apache.cassandra.locator.EverywhereStrategy' } AND DURABLE_WRITES = true;]
-Homer:t19792 mark$ vi log4j.properties
-Homer:t19792 mark$ java -cp ./*:. DSEtest 192.168.56.21
 DEBUG 17:25:23,930 Using SLF4J as the default logging framework
 DEBUG 17:25:23,939 java.nio.Buffer.address: available
 DEBUG 17:25:23,941 sun.misc.Unsafe.theUnsafe: available
