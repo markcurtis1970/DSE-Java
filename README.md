@@ -34,6 +34,31 @@ slf4j-log4j12-1.7.9.jar
 javac -cp ./*:. DSEtest.java
 ```
 
+### log4j properties
+
+Sample log4j.properties file
+
+```
+# output messages into a rolling log file as well as stdout
+log4j.rootLogger=DEBUG,stdout,R
+
+# stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%5p %d{HH:mm:ss,SSS} %m%n
+
+# rolling log file
+log4j.appender.R=org.apache.log4j.RollingFileAppender
+log4j.appender.R.maxFileSize=20MB
+log4j.appender.R.maxBackupIndex=50
+log4j.appender.R.layout=org.apache.log4j.PatternLayout
+log4j.appender.R.layout.ConversionPattern=%5p [%t] %d{ISO8601} %F (line %L) %m%n
+# Edit the next line to point to your logs directory
+log4j.appender.R.File=/tmp/simple-client.log
+
+log4j.logger.com.datastax.driver=INFO
+```
+
 ### Running
 
 ```
