@@ -6,7 +6,7 @@ This repository is purely for holding any examples, tests and other bits of java
 
 Theres a lot of examples for building with Maven but I'll just give a basic example here using command line and all local jar files:
 
-Here's the files I used (I probably didn't need all the netty files)
+Here's the files I used (I probably didn't need all the netty files), Also please use the **src/DSEtest.java** from the above src directory
 
 ```
 cassandra-driver-core-2.1.6.jar
