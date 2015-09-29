@@ -12,10 +12,10 @@ public class DSEtest {
 
     public static void main (String args[]){
         DSEtest test = new DSEtest();
-        test.runTest("192.168.56.20");
+        test.runTest(args[0]);
 
     }
-    private void runTest(String node){
+    private void runTest(String node) {
         cluster = Cluster.builder()
                 .addContactPoint(node)
                 .withCredentials("cassandra","cassandra") // comment out if no auth
@@ -23,10 +23,20 @@ public class DSEtest {
         session = cluster.connect();
 
         Metadata metadata = cluster.getMetadata();
-        System.out.printf("Connected to cluster: %s\n", metadata.getClusterName());
-        for ( Host host : metadata.getAllHosts() ) {
-            System.out.printf("Datacenter: %s; Host: %s; Rack: %s\n", host.getDatacenter(), host.getAddress(), host.getRack());
+        try {
+
+            System.out.printf("Connected to cluster: %s\n", metadata.getClusterName());
+            for (Host host : metadata.getAllHosts()) {
+                System.out.printf("Datacenter: %s; Host: %s; Rack: %s\n", host.getDatacenter(), host.getAddress(), host.getRack());
+            }
+            System.out.printf("Schema agrement: %s\n", metadata.checkSchemaAgreement());
+            System.out.printf("Keyspaces: %s\n", metadata.getKeyspaces());
         }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        session.close();
+        cluster.close();
     }
 
 }
