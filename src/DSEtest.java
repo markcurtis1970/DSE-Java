@@ -1,6 +1,3 @@
-/**
- * Created by mark on 26/06/15.
- */
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Host;
 import com.datastax.driver.core.Metadata;
