@@ -18,6 +18,7 @@ public class DSEtest {
     private void runTest(String node){
         cluster = Cluster.builder()
                 .addContactPoint(node)
+                .withCredentials("cassandra","cassandra") // comment out if no auth
                 .build();
         session = cluster.connect();
 
