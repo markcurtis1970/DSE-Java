@@ -15,9 +15,9 @@ import java.security.SecureRandom;
 public class TestSSL {
     public static void main(String[] args) throws Exception
     {
-        SSLContext context = getSSLContext("/Users/mark/truststore",
+        SSLContext context = getSSLContext("/Users/mark/dse.keystore",
                 "datastax",
-                "/Users/mark/keystore",
+                "/Users/mark/dse.keystore",
                 "datastax");
 
         // Default cipher suites supported by C*
@@ -25,8 +25,9 @@ public class TestSSL {
                 "TLS_RSA_WITH_AES_256_CBC_SHA" };
 
         Cluster cluster = Cluster.builder()
-                .addContactPoints("104.154.51.22")
+                .addContactPoints("192.168.57.20")
                 .withSSL(new SSLOptions(context, cipherSuites))
+                .withCredentials("cassandra", "cassandra") // comment out for no auth
                 .build();
         System.out.println("connecting...");
         Session session = cluster.connect();
@@ -36,6 +37,9 @@ public class TestSSL {
             System.out.println(myRow.toString());
 
         }
+
+        session.close();
+        cluster.close();
     }
 
     private static SSLContext getSSLContext(String truststorePath,
