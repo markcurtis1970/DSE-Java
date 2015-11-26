@@ -15,27 +15,38 @@ import java.security.SecureRandom;
 public class TestSSL {
     public static void main(String[] args) throws Exception
     {
-        SSLContext context = getSSLContext("/Users/mark/dse.keystore",
+        SSLContext context = getSSLContext("/Users/mark/deploy/datastax.truststore",
                 "datastax",
-                "/Users/mark/dse.keystore",
+                "/Users/mark/deploy/datastax.keystore",
                 "datastax");
+
+        Session session = null;
 
         // Default cipher suites supported by C*
         String[] cipherSuites = { "TLS_RSA_WITH_AES_128_CBC_SHA",
                 "TLS_RSA_WITH_AES_256_CBC_SHA" };
 
         Cluster cluster = Cluster.builder()
-                .addContactPoints("192.168.57.20")
+                .addContactPoints("104.197.156.26","104.197.25.113")
                 .withSSL(new SSLOptions(context, cipherSuites))
-                .withCredentials("cassandra", "cassandra") // comment out for no auth
+                //.withCredentials("cassandra", "cassandra") // comment out for no auth
                 .build();
-        System.out.println("connecting...");
-        Session session = cluster.connect();
-        System.out.println(session.getState().toString());
-        ResultSet myResults = session.execute("select * from system.peers");
-        for (Row myRow: myResults){
-            System.out.println(myRow.toString());
-
+        try {
+            System.out.println("connecting...");
+            session = cluster.connect();
+            System.out.println(session.getState().toString());
+            ResultSet myResults;
+            myResults = session.execute("select * from system.peers");
+            for (Row myRow : myResults) {
+                System.out.println(myRow.toString());
+            }
+            myResults = session.execute("select * from markc.testme");
+            for (Row myRow : myResults) {
+                System.out.println(myRow.toString());
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
 
         session.close();
