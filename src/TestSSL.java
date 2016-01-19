@@ -18,7 +18,7 @@ public class TestSSL {
         SSLContext context = getSSLContext("/Users/mark/deploy/datastax.truststore",
                 "datastax",
                 "/Users/mark/deploy/datastax.keystore",
-                "datastax");
+                "datastax"); // truststore first, keystore second
 
         Session session = null;
 
@@ -27,10 +27,10 @@ public class TestSSL {
                 "TLS_RSA_WITH_AES_256_CBC_SHA" };
 
         Cluster cluster = Cluster.builder()
-                .addContactPoints("104.197.156.26","104.197.25.113")
-                .withSSL(new SSLOptions(context, cipherSuites))
-                //.withCredentials("cassandra", "cassandra") // comment out for no auth
-                .build();
+                .addContactPoints("54.183.130.240")
+                        .withSSL(new SSLOptions(context, cipherSuites))
+                                //.withCredentials("cassandra", "cassandra") // comment out for no auth
+                        .build();
         try {
             System.out.println("connecting...");
             session = cluster.connect();
@@ -40,10 +40,12 @@ public class TestSSL {
             for (Row myRow : myResults) {
                 System.out.println(myRow.toString());
             }
+            /**
             myResults = session.execute("select * from markc.testme");
             for (Row myRow : myResults) {
                 System.out.println(myRow.toString());
-            }
+            }**/
+
         }
         catch (Exception e){
             e.printStackTrace();
